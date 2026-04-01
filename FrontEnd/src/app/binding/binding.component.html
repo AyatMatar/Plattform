@@ -1,0 +1,71 @@
+
+<i class="fa fa-address-book"></i>
+<i class="fa fa-address-book" style="font-size:24px"></i>
+<i class="fa fa-address-book" style="font-size:36px"></i>
+<i class="fa fa-address-book" style="font-size:48px;color:red"></i>
+<br>
+<button style="font-size:24px">Button <i class="fa fa-address-book"></i></button>
+<i style="font-size:24px" class="fa">&#xf2b9;</i>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Name is {{name}}</p>
+<p>Name is Ali</p>
+
+<div class="row">
+  <div class="col-4">
+    <img [src]="url" width="200" height="200" />
+
+
+  </div>
+  <div class="col-4">
+    <button class="btn btn-danger m-2" [disabled]="!isValid">Click</button>
+    <button class="btn btn-danger m-2" (click)="onClick()" >Click</button>
+
+  </div>
+  <div class="col-4">
+  <div [class.col-6]="isValid" [class.col-12]="!isValid" style="border:solid 5px red">
+    the name is: {{name}}<br />
+    the isValid: {{isValid}}
+  </div>
+
+  </div>
+
+</div>

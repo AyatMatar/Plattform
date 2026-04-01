@@ -1,0 +1,8 @@
+li {
+  list-style-type: none; /* لإزالة النقاط التي تظهر بشكل افتراضي */
+}
+
+i.ri-check-double-line {
+  float: right !important ; /* لتحديد موقع الايقونة على يمين النص */
+  margin-left: 10px; /* لتوفير مسافة بين النص والايقونة */
+}

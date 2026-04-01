@@ -1,0 +1,204 @@
+<div class="row mt-3">
+  <div class="m-auto" [class.col-6]="!isPopup" [class.col-12]="isPopup">
+    <div class="card m-auto">
+      <div class="card-header">
+        Register
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+          <div class="form-group col-12">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control"
+                   name="user.firstName" required  [disabled]="pageMode != PageModeEnum.Add || pageMode == PageModeEnum.View"
+                   #userFormFirstName="ngModel"
+                   minlength="2"
+                   [(ngModel)]="user.firstName" />
+            <span class="error-block" *ngIf="!userFormFirstName.valid && userFormFirstName.touched">
+              <span *ngIf="userFormFirstName.hasError('required')">
+
+                First Name is requerd!
+              </span>
+              <span *ngIf="userFormFirstName.hasError('minlength')">
+                First Name should be at least 2 char!
+              </span>
+            </span>
+
+          </div>
+          <div class="form-group col-12">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control"
+                   name="user.lastName" required  [disabled]="pageMode != PageModeEnum.Add || pageMode == PageModeEnum.View"
+                   [(ngModel)]="user.lastName" />
+
+          </div>
+          <div class="form-group col-12">
+            <label for="firstName">National Number</label>
+            <input type="text" class="form-control" [disabled]=" pageMode == PageModeEnum.View"
+                   name="user.nationalNumber" required
+                   #userFormNationalNumber="ngModel"
+                   minlength="8" maxlength="10"
+                   [(ngModel)]="user.nationalNumber" />
+            <span class="error-block" *ngIf="!userFormNationalNumber.valid && userFormNationalNumber.touched">
+              <span *ngIf="userFormNationalNumber.hasError('required')">
+
+                National Number is requerd!
+              </span>
+              <span *ngIf="userFormNationalNumber.hasError('minlength')">
+                National Number should be at least 8 digit!
+              </span>
+              <span *ngIf="userFormNationalNumber.hasError('maxlength')">
+                National Number should be at most 10 digit!
+              </span>
+            </span>
+
+          </div>
+
+          <div class="form-group col-12">
+            <label for="firstName">Phone Number</label>
+            <input type="text" class="form-control" [disabled]="pageMode == PageModeEnum.View"
+                   name="user.phoneNumber" required pattern="[0-9]*"
+                   #userFormPhoneNumber="ngModel"
+                   minlength="10" maxlength="10"
+                   [(ngModel)]="user.phoneNumber" />
+            <span class="error-block" *ngIf="!userFormPhoneNumber.valid && userFormPhoneNumber.touched">
+              <span *ngIf="userFormPhoneNumber.hasError('required')">
+
+                Phone Number is requerd!
+              </span>
+              <span *ngIf="userFormPhoneNumber.hasError('pattern')">
+
+                Phone Number must be number only!
+              </span>
+              <span *ngIf="userFormPhoneNumber.hasError('minlength')">
+                Phone Number should be 10 digit!
+              </span>
+              <span *ngIf="userFormPhoneNumber.hasError('maxlength')">
+                National Number should be 10 digit!
+              </span>
+            </span>
+
+          </div>
+
+
+          <div class="form-group col-12">
+            <label for="email">Email</label>
+            <input type="text" class="form-control"
+                   name="user.email" required [disabled]="pageMode == PageModeEnum.View"
+                   #userFormEmail="ngModel"
+                   email
+                   [(ngModel)]="user.email" />
+            <span class="error-block" *ngIf="!userFormEmail.valid && userFormEmail.touched">
+              <span *ngIf="userFormEmail.hasError('required')">
+
+                Email is requerd!
+              </span>
+              <span *ngIf="userFormEmail.hasError('email')">
+                Email in valid!
+              </span>
+            </span>
+
+          </div>
+
+          <div class="form-group col-12" *ngIf="pageMode == PageModeEnum.Add">
+            <label for="dateOfBirth">Date Of Birth</label>
+            <input type="date" class="form-control"
+                   name="user.dateOfBirth" required
+                   #userFormDateOfBirth="ngModel"
+                   [(ngModel)]="user.dateOfBirth" />
+            <span class="error-block" *ngIf="!userFormDateOfBirth.valid && userFormDateOfBirth.touched">
+              <span *ngIf="userFormDateOfBirth.hasError('required')">
+
+                Date Of Birth is requerd!
+              </span>
+
+            </span>
+
+          </div>
+
+          <div class="form-group col-12" *ngIf="pageMode != PageModeEnum.Add && user">
+            <label for="dateOfBirth">Date Of Birth</label>
+            <input type="text" class="form-control"
+                   name="user.dateOfBirth"  [disabled]="pageMode != PageModeEnum.Add"
+                   value="{{user.dateOfBirth|date:'dd/MM/yyyy'}}" />
+          </div>
+
+          <div class="form-group col-12">
+            <label for="address">Address</label>
+            <input type="text" class="form-control"
+                   name="user.address" required [disabled]="pageMode == PageModeEnum.View"
+                   [(ngModel)]="user.address" />
+
+          </div>
+
+          <div class="form-group col-12">
+            <label for="username">User Name</label>
+            <input type="text" class="form-control"
+                   name="user.username" required
+                   #userFormUserName="ngModel" [disabled]="pageMode == PageModeEnum.View"
+                   minlength="3"
+                   [(ngModel)]="user.username" />
+            <span class="error-block" *ngIf="!userFormUserName.valid && userFormUserName.touched">
+              <span *ngIf="userFormUserName.hasError('required')">
+
+                User Name is requerd!
+              </span>
+              <span *ngIf="userFormUserName.hasError('minlength')">
+                User Name should be at least 3 char!
+              </span>
+            </span>
+
+          </div>
+
+
+
+
+          <div class="form-group col-12">
+            <label for="password">Password</label>
+            <input type="password" class="form-control"
+                   name="user.password" required [disabled]="pageMode == PageModeEnum.View"
+                   [(ngModel)]="user.password" />
+
+          </div>
+          <div class="form-group col-12">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" class="form-control"
+                   name="user.confirmPassword" required [disabled]="pageMode == PageModeEnum.View"
+                   [(ngModel)]="user.confirmPassword" />
+
+          </div>
+
+          <div class="form-group col-12">
+            <label for="gender">gender</label>
+            <select class="form-select" id="gender" name="gender" [(ngModel)]="user.gender" required #addUserGender="ngModel" [disabled]="pageMode == PageModeEnum.View">
+              <option value="">--Selected Gender --</option>
+              <option value="Male">Male</option>
+              <option value="FeMale">FeMale</option>
+            </select>
+            <span class="error-block" *ngIf="!addUserGender.valid && addUserGender.touched">
+              <span *ngIf="addUserGender.hasError('required')">
+
+                Gender is requerd!
+              </span>
+            </span>
+
+          </div>
+
+
+
+          <div class="form-group col-12" *ngIf="!isPopup">
+            <button type="submit" class="btn btn-success m-2" [disabled]="!userForm.valid">Save</button>
+            <button type="reset" class="btn btn-danger m-2" (click)="reset()">Reset</button>
+            <button type="button" class="btn btn-danger m-2" routerLink="/user/list-user">Cancel</button>
+
+          </div>
+
+        </form>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>

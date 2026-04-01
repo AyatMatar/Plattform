@@ -1,0 +1,71 @@
+<h3>Child Component</h3>
+
+<p *ngIf="childName && childMark">Proparites: Name is : <b>{{childName}}</b> and mark is <b>{{childMark}}</b></p>
+
+<p>Object Datas: Name is : <b>{{childObject.name}}</b> and mark is <b>{{childObject.mark}}</b></p>
+
+<p>Form Datas: Name is : <b>{{childObjectForm.name}}</b> and mark is <b>{{childObjectForm.mark}}</b></p>
+
+<h2>welcome {{newName}}</h2>
+
+
+<div *ngIf="childListArray && childListArray.length">
+  <table class="table table-border">
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Mark
+        </th>
+      </tr>
+    </thead>
+    <tr *ngFor="let obj of childListArray">
+      <td>{{obj.name}}</td>
+      <td>{{obj.mark}}</td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="childList && childList.length">
+  <table class="table table-border">
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Mark
+        </th>
+      </tr>
+    </thead>
+    <tr *ngFor="let obj of childList">
+      <td>{{obj.name}}</td>
+      <td>{{obj.mark}}</td>
+    </tr>
+  </table>
+</div>
+<div>
+  <table class="table table-border">
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Mark
+        </th>
+      </tr>
+    </thead>
+    <tr *ngFor="let obj of serviceList">
+      <td>{{obj.name}}</td>
+      <td>{{obj.mark}}</td>
+    </tr>
+  </table>
+</div>
+
+
+<input class="form-control" #title  type="text"/>
+<br />
+<a class="btn btn-primary" (click)="updateEvent.emit(title.value)">Change title</a>

@@ -1,0 +1,80 @@
+
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Users</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col d-flex flex-row-reverse">
+              <button type="button" class="btn btn-primary m-2" routerLink="/user/user-add">Add New User</button>
+              <button type="button" class="btn btn-primary m-2" #openModalButton data-bs-toggle="modal" data-bs-target="#userModal">Add User</button>
+            </div>
+          </div>
+          <table class="table mx-auto">
+            <thead class="table-dark">
+              <tr class="row">
+                <th class="col">First Name</th>
+                <th class="col">Last Name</th>
+                <th class="col">Email</th>
+                <th class="col">National Number</th>
+                <th class="col">Phone Number</th>
+                <th class="col">Gender</th>
+                <th class="col">Action</th>
+              </tr>
+            </thead>
+
+            <tr class="row mt-4" *ngFor="let user of users">
+              <td class="col">{{user.firstName}}</td>
+              <td class="col">{{user.lastName}}</td>
+              <td class="col">{{user.email}}</td>
+              <td class="col">{{user.nationalNumber}}</td>
+              <td class="col">{{user.phoneNumber}}</td>
+              <td class="col">{{user.gender}}</td>
+              <td class="col">
+
+                <div class="container mt-3">
+                  <div class="btn-group">
+                      <button type="button" class="btn btn-primary mx-1" (click)="goToupdateuser(user)">Edit</button>
+                      <button type="button" class="btn btn-primary mx-1" (click)="edit(user)">Edit</button>
+                      <button type="button" class="btn btn-primary mx-1" (click)="view(user)">View</button>
+                      <button type="button" class="btn btn-danger  mx-1" (click)="delete(user)">Delete</button>
+                  </div>
+                </div>
+              </td>
+
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="userModal">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">User</h4>
+        <button type="button" class="btn-close" (click)="reset()" #closeButton data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <app-registration [isPopup]="isPopup" [user]="user" [pageMode]="pageMode" (isValid)="isValid=$event"></app-registration>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="reset()" data-bs-dismiss="modal">Close</button>
+        <button *ngIf="pageMode != PageModeEnum.View" type="button" class="btn btn-danger" (click)="reset()">Reset</button>
+        <button *ngIf="pageMode != PageModeEnum.View" type="button" class="btn btn-primary" (click)="save()">Save</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+

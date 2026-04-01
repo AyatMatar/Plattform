@@ -1,0 +1,112 @@
+<!-- ======= Team Section ======= -->
+<section id="team" class="team section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>الشعبة</h2>
+    </div>
+
+    <div class="row" *ngIf="section">
+
+      <div class="col-lg-6 my-2" data-aos="zoom-in" data-aos-delay="100">
+        <div class="member d-flex align-items-start">
+          <div class="pic">
+            <img src="assets/img/team/{{section.teacher.imgName}}" class="img-fluid" alt="" *ngIf="section.teacher.imgName">
+            <img src="assets/img/team/download.png" class="img-fluid" alt="" *ngIf="!section.teacher.imgName">
+          </div>
+          <div class="member-info">
+            <h4>معلومات المحاضر<i class="fa fa-user mx-2" aria-hidden="true"></i></h4>
+            <h4>{{getfullName(section.teacher)}}</h4>
+            <span>{{section.teacher.experience}}</span>
+            <p>{{section.teacher.phoneNumber}}</p>
+            <p>{{section.teacher.email}}</p>
+            <div class="social">
+              <a *ngIf="section.teacher.twitter" target="_blank" href="{{section.teacher.twitter}}"><i class="ri-twitter-fill"></i></a>
+              <a *ngIf="section.teacher.facebook" target="_blank" href="{{section.teacher.facebook}}"><i class="ri-facebook-fill"></i></a>
+              <a *ngIf="section.teacher.instagram" target="_blank" href="{{section.teacher.instagram}}"><i class="ri-instagram-fill"></i></a>
+              <a *ngIf="section.teacher.linkedin" target="_blank" href="{{section.teacher.linkedin}}"> <i class="ri-linkedin-box-fill"></i> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 my-2" data-aos="zoom-in" data-aos-delay="200">
+        <div class="member align-items-center">
+          <div class="member-info text-end">
+            <h4>معلومات القسم<i class="{{section.course.department.iconClass}}"></i></h4>
+            <form>
+              <div class="row text-end">
+                <div class="form-group col-md-12">
+                  <label for="name">اسم القسم</label>
+                  <input type="text" class="form-control" disabled name="section.course.department.name" id="section.course.department.name" required [(ngModel)]="section.course.department.name" />
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="description">وصف القسم</label>
+                  <input type="text" class="form-control" disabled name="section.course.department.description" id="section.course.department.description" required [(ngModel)]="section.course.department.description" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 my-2" data-aos="zoom-in" data-aos-delay="200">
+        <div class="member align-items-center">
+          <div class="member-info text-end">
+            <h4>معلومات الشعبة<i class="fa fa-book"></i></h4>
+            <form>
+              <div class="row text-end">
+                <div class="form-group col-md-12">
+                  <label for="name">اسم الشعبة</label>
+                  <input type="text" class="form-control" name="section.name" id="section.name" [disabled]="!canEdit" required [(ngModel)]="section.name" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="description">عدد الساعات الكلي</label>
+                  <input type="number" class="form-control" name="section.totalHoures" [disabled]="!canEdit" id="section.totalHoures" required [(ngModel)]="section.totalHoures" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="description">عدد المحاضرات أسبوعيا</label>
+                  <input type="number" class="form-control" name="section.lecturesPerWeek" [disabled]="!canEdit" id="section.lecturesPerWeek" required [(ngModel)]="section.lecturesPerWeek" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="description">موعد المحاضرة: من الساعة</label>
+                  <input type="number" class="form-control" name="section.timeFrom" [disabled]="!canEdit" id="section.timeFrom" required [(ngModel)]="section.timeFrom" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="description">موعد المحاضرة: إلى الساعة</label>
+                  <input type="number" class="form-control" name="section.timeTo" [disabled]="!canEdit" id="section.timeTo" required [(ngModel)]="section.timeTo" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-6 my-2" data-aos="zoom-in" data-aos-delay="200">
+        <div class="member align-items-center">
+          <div class="member-info text-end">
+            <h4>معلومات الدورة<i class="fa fa-book mx-2"></i></h4>
+            <form>
+              <div class="row text-end">
+                <div class="form-group col-md-12">
+                  <label for="name">اسم الدورة</label>
+                  <input type="text" class="form-control" disabled name="section.course.name" id="section.course.name" required [(ngModel)]="section.course.name" />
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="description">وصف للدورة</label>
+                  <input type="text" class="form-control" disabled name="section.course.description" id="section.course.description" required [(ngModel)]="section.course.description" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <button *ngIf="!canEdit" (click)="allwEdit()"class="btn btn-block my-1 text-white btn-block-style"><b>تعديل</b></button>
+      <button *ngIf="canEdit" (click)="save()"class="btn btn-block my-1 text-white btn-block-style"><b>حفظ</b></button>
+
+    </div>
+
+  </div>
+</section><!-- End Team Section -->

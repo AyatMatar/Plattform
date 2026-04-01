@@ -1,0 +1,71 @@
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top ">
+  <div class="container d-flex align-items-center">
+
+    <h1 class="logo me-auto"><a href="index.html">منصة الوفاء التعليمية</a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto active" routerLink="/">الرئيسة</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/about">حول منصة الوفاء</a></li>
+        <li><a class="nav-link scrollto" routerLink="/services">الأقسام الرئيسية</a></li>
+        <li><a class="nav-link   scrollto" routerLink="/course/courses">الدورات</a></li>
+        <li><a class="nav-link scrollto" routerLink="/team">فريقنا</a></li>
+        <li class="dropdown">
+          <a href="#"><span>المزيد</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a routerLink="/about">حول منصة الوفاء</a></li>
+
+            <li><a routerLink="/team">فريقنا</a></li>
+            <li><a routerLink="/course/courses">الدورات</a></li>
+            <li><a routerLink="/sections">الشعب</a></li>
+            <li class="dropdown">
+              <a routerLink="/services"><span>الأقسام الرئيسية</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a routerLink="/services">الأقسام الرئيسية</a></li>
+                <li><a routerLink="/course/courses">الدورات</a></li>
+                <li><a routerLink="/sections">الشعب</a></li>
+                <li><a routerLink="/team">فريقنا</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a class="nav-link scrollto" routerLink="/contact">اتصل بنا</a></li>
+        <!--<li><a class="getstarted scrollto" routerLink="/course/courses">أبدء</a></li>-->
+        <!--<li *ngIf="!loggedin()"><a class="nav-link scrollto" routerLink="/login">تسجيل الدخول</a></li>
+        <li *ngIf="!loggedin()"><a class="nav-link scrollto" routerLink="/user/user-add">التسجيل</a></li>-->
+        <!--<li ><a class="nav-link scrollto">Welcome {{loggedinUser}}</a></li>-->
+
+
+
+        <li class="dropdown">
+          <a href="#" class="getstarted scrollto">
+          <span *ngIf="loggedin()">Welcome {{loggedinUser}}</span>
+          <span *ngIf="!loggedin()">الدخول</span>
+          <i class="bi bi-chevron-down"></i></a>
+          <ul>
+
+            <li *ngIf="!loggedin()">
+              <a class="nav-link scrollto" routerLink="/user/login">
+                <i class="fa fa-sign-in iconImg" aria-hidden="true"></i>تسجيل الدخول
+              </a>
+            </li>
+            <li *ngIf="!loggedin()"><a class="nav-link scrollto" routerLink="/user/user-add"><i class="fa fa-user-plus iconImg" aria-hidden="true"></i>مستخدم جديد</a></li>
+            <li *ngIf="loggedin()"><a class="nav-link scrollto" routerLink="/services"><i class="fa fa-book iconImg" aria-hidden="true"></i>الدورات المسجلة</a></li>
+            <li *ngIf="loggedin()"><a class="nav-link scrollto" routerLink="/user/user-update/{{loggedinUserId}}"><i class="fa fa-id-card-o iconImg" aria-hidden="true"></i>معلوماتي</a></li>
+            <li *ngIf="loggedin()"><a class="nav-link scrollto" href="#" (click)="logout()"><i class="fa fa-sign-out  iconImg" aria-hidden="true"></i>تسجيل الخروج</a></li>
+          
+          </ul>
+        </li>
+
+
+
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+  </div>
+</header><!-- End Header -->
